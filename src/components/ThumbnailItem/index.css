@@ -2,10 +2,20 @@
 .thumbnail {
   height: 50px;
   width: 50px;
-  display: flex-wrap;
+  flex-wrap: wrap;
   margin-right: 15px;
   border-radius: 7px;
+  opacity: 0.5;
 }
 .thumbnail-container {
   display: flex;
+  flex-direction: row;
+}
+.button {
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+}
+.activeThumbnail {
+  opacity: 1;
 }

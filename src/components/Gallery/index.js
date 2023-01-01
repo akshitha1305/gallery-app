@@ -1,6 +1,8 @@
 import './index.css'
 import {Component} from 'react'
 
+import ThumbnailItem from '../ThumbnailItem'
+
 const imagesList = [
   {
     id: 0,
@@ -74,10 +76,34 @@ const imagesList = [
 
 // Write your code here.
 class Gallery extends Component {
+  state = {image: imagesList[0].imageUrl}
+
+  clickThumbnail = imageUrl => {
+    this.setState({
+      image: imageUrl,
+    })
+  }
+
   render() {
+    const {image} = this.state
+
     return (
       <div className="bg-container">
-        <img className="img" src={imagesList.imageUrl} />
+        <div>
+          <img src={image} className="img" alt={imagesList.imageAltText} />
+        </div>
+        <h1>Nature Photography</h1>
+        <p>Nature Photography by Rahul</p>
+        <ul className="thumbnails-container">
+          {imagesList.map(each => (
+            <ThumbnailItem
+              eachThumbnail={each}
+              clickThumbnail={this.clickThumbnail}
+              key={each.id}
+              isClicked={each.imageUrl === image}
+            />
+          ))}
+        </ul>
       </div>
     )
   }
